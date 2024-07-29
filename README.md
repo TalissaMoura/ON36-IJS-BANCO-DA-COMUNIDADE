@@ -24,8 +24,7 @@ fortalecer empreendedores locais cedendo crédito sem recorrer a juros.
 
 ## Diagrama de entidades
 
-<img src="./images/diagrama_de_classes.png" width="760" height="500"/>
-
+Em "images/diagrama_de_classes.md"
 
 
 
