@@ -1,27 +1,51 @@
 import baseAccount from "../baseClasses/baseAccount";
-import Client from "../Client/client";
-import Card from "../Card/cardClass";
+import Client from "../Clients/Client";
+import { v4 as uuidv4 } from 'uuid';
 
-
-export default class PoupancaAccount implements baseAccount{
+export default class PoupancaAccount extends baseAccount{
     _client: Client
-    _card: Card
     _isActive: boolean
     _initDate: string 
-    _currentAccountID: number
+    _poupancaAccountID: number
     _poupancaAccountNumber:number
     _poupancaRendimento: number
+    _amount: number
 
-    getIsActive() {
+    constructor(
+        client:Client,
+        isActive:boolean,
+        initDate:string,
+        poupancaAccountNumber:number,
+        poupancaRendimento:number){
+        super(client,isActive,initDate)
+        this._client=client
+        this._isActive = isActive
+        this._initDate = initDate
+        this._poupancaAccountID = uuidv4()
+        this._poupancaAccountNumber = poupancaAccountNumber
+        this._poupancaRendimento = poupancaRendimento
+    }
+
+    get amount(){
+        return this._amount
+    }
+    get poupancaAccountNumber(){
+        return this._poupancaAccountNumber
+    }
+
+    get isActive() {
         return this._isActive
     }
-    getPoupancaRendimento(){
+    get poupancaRendimento(){
         return this._poupancaRendimento
     }
-    setIsActive(new_active: boolean) {
+    set isActive(new_active: boolean) {
         this._isActive = new_active
     }
-    setPoupancaRendimento(new_rendimento:number){
+    set poupancaRendimento(new_rendimento:number){
         this._poupancaRendimento = new_rendimento
+    }
+    set amount(new_amount:number){
+        this._amount = new_amount
     }
 }
