@@ -1,0 +1,34 @@
+import Client from "./Client";
+import BankManager from "../BankManager/bankManager";
+import CurrentAccount from "../Accounts/currentAccount";
+import PoupancaAccount from "../Accounts/poupancaAccount";
+import Withdrawn from "../Withdrawn/Withdrawn";
+import Deposit from "../Deposit/Deposit";
+import Payments from "../Payments/Payments";
+import Transfer from "../Transfer/Transfer";
+export default class ClientAccount {
+    _clientAccountID: string;
+    _client: Client;
+    _bankManager: BankManager;
+    _state: string;
+    _city: string;
+    _poupancaAccount: PoupancaAccount[];
+    _currentAccount: CurrentAccount[];
+    _withdraw: Withdrawn[];
+    _deposit: Deposit[];
+    _payments: Payments[];
+    _transfer: Transfer[];
+    constructor(client: Client, bankManager: BankManager, state: string, city: string);
+    get client(): Client;
+    get currentAccounts(): CurrentAccount[];
+    get poupancaAccount(): PoupancaAccount[];
+    get withdraw(): Withdrawn[];
+    get deposit(): Deposit[];
+    get payments(): Payments[];
+    get transfer(): Transfer[];
+    addcurrentAccount(newCurrentAccount: CurrentAccount): void;
+    addpoupancaAccount(newPoupancaAccount: PoupancaAccount): void;
+    addWithdrawn(newWithdrawn: Withdrawn): void;
+    addDeposit(newDeposit: Deposit): void;
+    addTransfer(newTransfer: Transfer): void;
+}
