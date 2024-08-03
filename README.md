@@ -24,7 +24,12 @@ fortalecer empreendedores locais cedendo crédito sem recorrer a juros.
 
 ## Diagrama de entidades
 
-Em "images/diagrama_de_classes.md"
+Accounts 
+Em  ./src/Accounts/class_diagram.md
+
+People
+
+Em ./src/People/class_diagram.md
 
 
 ## Configuração do projeto 
