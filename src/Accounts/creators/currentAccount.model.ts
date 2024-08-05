@@ -1,10 +1,11 @@
 import iAccount from "../factories/iAccount.model";
-import { v4 as uuidv4 } from 'uuid';
 import depositCurrentAccount from "../products/currentAccount/depositCurrentAccount.model"
 import transferCurrentAccount from "../products/currentAccount/transferCurrentAccount.model";
 import withdrawnCurrentAccount from "../products/currentAccount/withdrawnCurrentAccount.model";
 import openCurrentAccount from "../products/currentAccount/openCurrentAccount.model";
-import { ExceptionsHandler } from "@nestjs/core/exceptions/exceptions-handler";
+import deactivateAccount from "../products/interfaces/iDeactivateAccount.model";
+import { UnauthorizedException } from "@nestjs/common";
+import deactivateCurrentAccount from "../products/currentAccount/deactivateCurrentAccount.model";
 
 export default class currentAccount implements iAccount {
     _accountID: string 
@@ -14,16 +15,16 @@ export default class currentAccount implements iAccount {
     _initDate: string
     _limitChequeEspecial:number
     
-    private validadeOperation(isBankManager:boolean){
+    private validateOperation(isBankManager:boolean){
         if(!isBankManager){
             return false
         }
         return true
     }
 
-    createAccount(isBankManager:boolean):openCurrentAccount{
-        if(!this.validadeOperation(isBankManager)){
-            throw new ExceptionsHandler()
+    createOpenAccount(isBankManager:boolean):openCurrentAccount{
+        if(!this.validateOperation(isBankManager)){
+            throw new UnauthorizedException("Unauthorized operation")
         }
         return  new openCurrentAccount()
     }
@@ -36,6 +37,9 @@ export default class currentAccount implements iAccount {
     }
     createWithdrawn(): withdrawnCurrentAccount {
         return new withdrawnCurrentAccount()
+    }
+    startDeactivate():deactivateCurrentAccount{
+        return new deactivateCurrentAccount()
     }
 }
 
