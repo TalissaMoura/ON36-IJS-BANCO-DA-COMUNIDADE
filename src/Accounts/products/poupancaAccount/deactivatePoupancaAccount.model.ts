@@ -1,7 +1,8 @@
+import poupancaAccount from "src/Accounts/creators/poupancaAccount.model";
 import iDeactivateAccount from "../interfaces/iDeactivateAccount.model"
 
 export default class deactivatePoupancaAccount implements iDeactivateAccount{
-    deactivate():void {
-        
+    deactivate(poupancaAccount:poupancaAccount):void {
+        poupancaAccount._isActive = false 
     }
 }
