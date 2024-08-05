@@ -1,4 +1,6 @@
+import iAccount from "src/Accounts/factories/iAccount.model";
+
 export default interface iDeposit {
     
-    processDeposit():void
+    processDeposit(amountDeposit:number,account:iAccount):void
 }
