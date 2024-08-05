@@ -1,10 +1,12 @@
 import iAccount from "../factories/iAccount.model";
-import { v4 as uuidv4 } from 'uuid';
+import openPoupancaAccount from "../products/poupancaAccount/openPoupancaAccount.model"
 import depositPoupancaAccount from "../products/poupancaAccount/depositPoupancaAccount.model"
 import transferPoupancaAccount from "../products/poupancaAccount/transferPoupancaAccount.model";
 import withdrawnPoupancaAccount from "../products/poupancaAccount/withdrawnPoupancaAccount.model";
+import { UnauthorizedException } from "@nestjs/common";
+import deactivatePoupancaAccount from "../products/poupancaAccount/deactivatePoupancaAccount.model";
 
-class poupancaAccount implements iAccount {
+export default class poupancaAccount implements iAccount {
     _accountID: string 
     _accountNumber: string 
     _amount: number
@@ -13,23 +15,18 @@ class poupancaAccount implements iAccount {
     _rendimento:number
     
 
-    constructor(
-        accountNumber: string,
-        amount: number,
-        isActive: boolean,
-        initDate: string,
-        rendimento:number
-    ){
-        this._accountID = uuidv4()
-        this._accountNumber = accountNumber 
-        this._amount = amount 
-        this._isActive = isActive 
-        this._initDate = initDate
-        this._rendimento = rendimento
+    private validateOperation(isBankManager:boolean){
+        if(!isBankManager){
+            return false
+        }
+        return true
     }
 
-    createAccount():poupancaAccount{
-        return new poupancaAccount()
+    createOpenAccount(isBankManager:boolean):openPoupancaAccount{
+        if(!this.validateOperation(isBankManager)){
+            throw new UnauthorizedException("Unauthorized operation")
+        }
+        return new openPoupancaAccount()
     }
 
     createDeposit(): depositPoupancaAccount {
@@ -39,7 +36,10 @@ class poupancaAccount implements iAccount {
         return new transferPoupancaAccount()
     }
     createWithdrawn(): withdrawnPoupancaAccount {
-        return new withdrawnPoupancatAccount()
+        return new withdrawnPoupancaAccount()
+    }
+    startDeactivate(): deactivatePoupancaAccount {
+        return new deactivatePoupancaAccount()
     }
 }
 
