@@ -1,3 +1,5 @@
+import iAccount from "src/Accounts/factories/iAccount.model";
+
 export default interface iWithdrawn {
-    processWithdrawn()
+    processWithdrawn(amountWithdrawn:number,account:iAccount)
 }
