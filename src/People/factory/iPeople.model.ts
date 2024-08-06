@@ -1,5 +1,5 @@
 import iCreatePeopleType from "../products/interfaces/iCreatePeopleType.model"
-import iDeactivate from "../products/interfaces/iDeactivatePeopleType.model"
+import iDeactivatePeopleType from "../products/interfaces/iDeactivatePeopleType.model"
 
 export default interface iPeople {
     _peopleID: string 
@@ -8,6 +8,6 @@ export default interface iPeople {
     _isActive: boolean
 
 
-    deactivateAccount():iDeactivate
-    createPeopleType(): iCreatePeopleType
+    deactivateAccount():iDeactivatePeopleType
+    createAccount(): iCreatePeopleType
 }
