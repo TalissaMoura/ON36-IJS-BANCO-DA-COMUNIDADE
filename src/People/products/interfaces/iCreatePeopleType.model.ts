@@ -1,3 +1,3 @@
 export default interface iCreatePeopleType{
-    create()
+    create(name: string, cpf: string)
 }
