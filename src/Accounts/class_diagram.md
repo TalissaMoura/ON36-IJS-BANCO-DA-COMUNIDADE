@@ -4,6 +4,7 @@ classDiagram
 iAccounts ..> iDeposit : instantiate
 iAccounts ..> iWithdrawn : instantiate
 iAccounts ..> iTransfer : instantiate
+iAccounts ..> iOpenAccount: instantiate
 
 iAccounts <| .. currentAccount: implements
 iAccounts <| .. poupancaAccount: implements
