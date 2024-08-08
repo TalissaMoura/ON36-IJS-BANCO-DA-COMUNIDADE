@@ -1,0 +1,58 @@
+[
+  {
+    "_accountID": "2c6c8f26-36cd-446b-951c-0e039cbfad14",
+    "_amount": 250,
+    "_isActive": true,
+    "_initDate": "2024-5-8",
+    "_accountNumber": "8547"
+  },
+  {
+    "_accountID": "6ce73870-ead1-4807-907e-73d1f6fed7fa",
+    "_amount": 400,
+    "_isActive": true,
+    "_initDate": "2022-8-6",
+    "_accountNumber": "5478"
+  },
+  {
+    "_accountID": "dd8d8b0a-dd24-4920-a19e-0aa5d3424471",
+    "_amount": 3690,
+    "_isActive": true,
+    "_initDate": "2022-8-14",
+    "_accountNumber": "2324"
+  },
+  {
+    "_accountID": "7a5f9a53-a5f9-470b-b6f5-f3d67ee51c81",
+    "_amount": 320,
+    "_isActive": false,
+    "_initDate": "2024-3-10",
+    "_accountNumber": "5647"
+  },
+  {
+    "_accountID": "d12d9c65-d2de-45c7-83d7-e9142c48f87f",
+    "_amount": 500,
+    "_isActive": true,
+    "_initDate": "2023-6-14",
+    "_accountNumber": "2744"
+  },
+  {
+    "_accountID": "54c84d54-64c1-4583-bb51-0939a8d007b1",
+    "_amount": 650,
+    "_isActive": true,
+    "_initDate": "2022-4-14",
+    "_accountNumber": "7412"
+  },
+  {
+    "_accountID": "63a68bed-84fe-4694-baab-5defabf87f81",
+    "_amount": 650,
+    "_isActive": true,
+    "_initDate": "2022-4-14",
+    "_accountNumber": "7412"
+  },
+  {
+    "_accountID": "31644825-b413-4f26-9d21-e88d42072813",
+    "_amount": 256,
+    "_isActive": true,
+    "_initDate": "2023-7-21",
+    "_accountNumber": "8965"
+  }
+]
