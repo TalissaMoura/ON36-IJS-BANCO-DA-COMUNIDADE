@@ -41,5 +41,12 @@ export default class currentAccount implements iAccount {
     startDeactivate():deactivateCurrentAccount{
         return new deactivateCurrentAccount()
     }
+
+    updateLimitChequeEspecial(isBankManager:boolean,limitValue:number):void{
+        if(!this.validateOperation(isBankManager)){
+            throw new UnauthorizedException("Unauthorized operation")
+        }
+        this._limitChequeEspecial = limitValue
+    }
 }
 
