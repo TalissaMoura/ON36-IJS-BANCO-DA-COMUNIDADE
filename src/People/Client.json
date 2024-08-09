@@ -1,0 +1,19 @@
+[
+  {
+    "_peopleID": "5790402b-5faf-4990-8938-a8b38422e9f0",
+    "_name": "Luis",
+    "_cpf": "32873298768",
+    "_isActive": false,
+    "_bankManagerID": "5790402b-5faf-4990-8938-a8b38422e9f0",
+    " _currentAccount": [],
+    " _poupancaAccount": []
+  },
+  {
+    "_peopleID": "80ca9aae-5188-4fb0-ab24-8fd7758af571",
+    "_name": "Mariana",
+    "_cpf": "76523498765",
+    "_isActive": true,
+    "_currentAccount": [],
+    "_poupancaAccount": []
+  }
+]
