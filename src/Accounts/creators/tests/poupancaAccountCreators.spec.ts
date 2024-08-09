@@ -23,4 +23,8 @@ describe("PoupancaAccount products tests",()=>{
     test("create new Poupanca account transfer", () => {
         expect(account.createWithdrawn()).toBeInstanceOf(withdrawnPoupancaAccount)
     })
+    test("should set a new rendimento", () => {
+        account.updateRendimento(true,0.2)
+        expect(account).toHaveProperty("_rendimento",0.2)
+    })
 })
