@@ -6,7 +6,7 @@ export default class openCurrentAccount implements iOpenAccount{
 
     create(accountNumber:string,
            amount:number,
-           initDate:string):currentAccount{
+           initDate:string,):currentAccount{
         
         const cc = new currentAccount()
 
