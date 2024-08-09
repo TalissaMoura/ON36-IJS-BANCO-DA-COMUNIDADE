@@ -41,5 +41,8 @@ export default class poupancaAccount implements iAccount {
     startDeactivate(): deactivatePoupancaAccount {
         return new deactivatePoupancaAccount()
     }
+    updateRendimento(isBankManager:boolean,rendimento:number):void {
+        this._rendimento = rendimento
+    }
 }
 
