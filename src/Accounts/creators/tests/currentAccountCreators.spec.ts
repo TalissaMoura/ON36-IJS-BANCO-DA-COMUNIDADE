@@ -23,4 +23,8 @@ describe("currentAccount products tests",()=>{
     test("create new current account transfer", () => {
         expect(account.createWithdrawn()).toBeInstanceOf(withdrawnCurrentaAccount)
     })
+    test("should set a new limitChequeEspecial", () => {
+        account.updateLimitChequeEspecial(true,200)
+        expect(account).toHaveProperty("_limitChequeEspecial",200)
+    })
 })
