@@ -1,0 +1,16 @@
+[
+  {
+    "_peopleID": "3a665d0e-8775-49ea-bc83-b72d6deb9b48",
+    "_name": "Ana Maria",
+    "_cpf": "87534598765",
+    "_isActive": false,
+    "_bankManagerToken": "3a665d0e-5489-49ea-bc83-b72d6deb9b48"
+  },
+  {
+    "_name": "Luisa",
+    "_cpf": "75421598547",
+    "_isActive": true,
+    "_peopleID": "33430c83-4730-408e-a94d-cbf014162530",
+    "_bankManagerToken": "8e739a3f-2c3b-4105-9ddb-185da5108de4"
+  }
+]
