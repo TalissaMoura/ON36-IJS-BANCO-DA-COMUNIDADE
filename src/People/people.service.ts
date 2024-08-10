@@ -125,7 +125,7 @@ export class PeopleService {
       return bankManager;
     }
   
-    deactivateBankManagertById(id: string): bankManager {
+    deactivateBankManagerById(id: string): bankManager {
       const bankManagers = this.readBankManagers();
       const findBankManager = bankManagers.find(account => account._peopleID === id);
       if(!findBankManager) {
