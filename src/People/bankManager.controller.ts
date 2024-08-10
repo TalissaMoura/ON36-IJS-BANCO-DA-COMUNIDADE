@@ -19,12 +19,12 @@ import bankManager from './creators/bankManager.model';
   return this.peopleService.findBankManagerById(id)
   }
   @Put(':id')
-  updateBankManager(
+  updateBankManagerById(
   @Param('id',new ParseUUIDPipe({ version: '4' })) id: string,
   @Body("name") name: string,
   @Body("cpf") cpf: string,
   ): bankManager{
-    return this.peopleService.updateBankManager(id,name,cpf)
+    return this.peopleService.updateBankManagerById(id,name,cpf)
     }
  @Delete(":id")
  deactiveBankManager(
