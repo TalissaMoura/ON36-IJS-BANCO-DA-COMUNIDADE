@@ -50,7 +50,7 @@ export class AccountsService {
     return currentAccount;
   }
 
-  updateCurrentAccount(id: string, amount: number, initDate: string, accountNumber: string): currentAccount {
+  updateCurrentAccountById(id: string, amount: number, initDate: string, accountNumber: string): currentAccount {
     const accounts = this.readCurrentAccounts();
     const currentAccount = accounts.find(account => account._accountID === id);
 
@@ -108,7 +108,7 @@ export class AccountsService {
     return poupancaAccount;
   }
 
-  updatePoupancaAccount(id: string, amount: number, initDate: string, accountNumber: string): poupancaAccount {
+  updatePoupancaAccountById(id: string, amount: number, initDate: string, accountNumber: string): poupancaAccount {
     const accounts = this.readPoupancaAccounts();
     const poupancaAccount = accounts.find(account => account._accountID === id);
     const poupancaAccountIndex = accounts.findIndex(account => account._accountID === id);
