@@ -20,15 +20,15 @@ export class clientController {
     return this.peopleService.findClientById(id)
   }
   @Put(':id')
-  updateClient(
+  updateClientById(
     @Param('id',new ParseUUIDPipe({ version: '4' })) id: string,
     @Body("name") name: string,
     @Body("cpf") cpf: string,
   ): Client{
-    return this.peopleService.updateClient(id,name,cpf)
+    return this.peopleService.updateClientById(id,name,cpf)
   }
   @Delete(":id")
-  deactiveClient(
+  deactiveClientbyID(
     @Param("id",new ParseUUIDPipe({ version: '4' })) id: string
   ):Client{
     return this.peopleService.deactivateClientById(id)
