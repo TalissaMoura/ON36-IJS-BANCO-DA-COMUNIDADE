@@ -3,7 +3,6 @@ import depositCurrentAccount from "../products/currentAccount/depositCurrentAcco
 import transferCurrentAccount from "../products/currentAccount/transferCurrentAccount.model";
 import withdrawnCurrentAccount from "../products/currentAccount/withdrawnCurrentAccount.model";
 import openCurrentAccount from "../products/currentAccount/openCurrentAccount.model";
-import deactivateAccount from "../products/interfaces/iDeactivateAccount.model";
 import { UnauthorizedException } from "@nestjs/common";
 import deactivateCurrentAccount from "../products/currentAccount/deactivateCurrentAccount.model";
 
