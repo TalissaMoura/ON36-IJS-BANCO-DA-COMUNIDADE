@@ -7,24 +7,24 @@
     "_bankManagerToken": "3a665d0e-5489-49ea-bc83-b72d6deb9b48"
   },
   {
-    "_name": "Luisa",
+    "_name": "Luisa Oliveira",
     "_cpf": "75421598547",
     "_isActive": true,
     "_peopleID": "33430c83-4730-408e-a94d-cbf014162530",
     "_bankManagerToken": "8e739a3f-2c3b-4105-9ddb-185da5108de4"
   },
   {
-    "_name": "Luiza",
-    "_cpf": "3623875432",
+    "_name": "Ronaldo Silveira",
+    "_cpf": "12354874544",
     "_isActive": true,
-    "_peopleID": "86454654-717e-43b1-87a7-2268de0ab412",
-    "_bankManagerToken": "cea0bf62-5db5-4926-b717-b3425a6275a9"
+    "_peopleID": "4acdbbf4-463b-4c92-aec8-e4908f59309b",
+    "_bankManagerToken": "141c7b89-5ade-419a-8cf7-2c3bdc298885"
   },
   {
-    "_name": "Luiza",
-    "_cpf": "3623875432",
+    "_name": "Tarcila Amaral",
+    "_cpf": "12354874516",
     "_isActive": true,
-    "_peopleID": "364e5410-8f8e-4534-bd91-843feb8a875a",
-    "_bankManagerToken": "be3a30d8-3c50-47d6-ade1-d9c317aae4ee"
+    "_peopleID": "f97ac5ea-aa96-46c7-adce-f22e74a20e61",
+    "_bankManagerToken": "e1e69de6-ec58-4619-b680-ef0cbcad2ab1"
   }
 ]

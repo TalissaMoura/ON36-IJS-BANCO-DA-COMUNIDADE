@@ -10,24 +10,64 @@
   },
   {
     "_peopleID": "80ca9aae-5188-4fb0-ab24-8fd7758af571",
-    "_name": "Mariana",
+    "_name": "Mariana Silva",
     "_cpf": "76523498765",
     "_isActive": true,
     "_currentAccount": [],
     "_poupancaAccount": []
   },
   {
-    "_peopleID": "62ea1c1f-2d58-4c99-9d7b-06195cfb2e40",
-    "_name": "John Doe",
-    "_cpf": "34567912345",
+    "_peopleID": "507eba82-2b74-4b1a-b78b-e27161a5247a",
+    "_name": "Thiago",
+    "_cpf": 4527893412,
+    "_isActive": false,
+    "_currentAccount": [],
+    "_poupancaAccount": []
+  },
+  {
+    "_peopleID": "894c0de6-ac0b-47d0-a6b3-ca0881692075",
+    "_name": "Roberta Almeida",
+    "_cpf": "345679145789",
     "_isActive": true,
     "_currentAccount": [],
     "_poupancaAccount": []
   },
   {
-    "_peopleID": "af2dfa64-f3d1-4d44-91d0-329b5ad1efee",
-    "_name": "John Doe",
-    "_cpf": "34567912345",
+    "_peopleID": "9bc86436-e66f-40e1-a094-5f6167eea83f",
+    "_name": "Joelma",
+    "_cpf": "345679145412",
+    "_isActive": true,
+    "_currentAccount": [],
+    "_poupancaAccount": []
+  },
+  {
+    "_peopleID": "19ed7977-61bb-4402-a384-9713a9cf2cd7",
+    "_name": "Roberta Silva",
+    "_cpf": "236679145412",
+    "_isActive": true,
+    "_currentAccount": [],
+    "_poupancaAccount": []
+  },
+  {
+    "_peopleID": "29d53ffc-cf12-4e0a-a7e7-1cdc7e2c37e9",
+    "_name": "Eduardo Moura",
+    "_cpf": "41236587945",
+    "_isActive": true,
+    "_currentAccount": [],
+    "_poupancaAccount": []
+  },
+  {
+    "_peopleID": "7a891657-b180-494b-9829-dbf9a190daf9",
+    "_name": "Eduardo Moura",
+    "_cpf": "41236587945",
+    "_isActive": true,
+    "_currentAccount": [],
+    "_poupancaAccount": []
+  },
+  {
+    "_peopleID": "d64e15f1-0c08-449b-89d6-247353f1ab96",
+    "_name": "Eduardo Moura",
+    "_cpf": "41236587945",
     "_isActive": true,
     "_currentAccount": [],
     "_poupancaAccount": []
