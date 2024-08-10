@@ -49,7 +49,7 @@ export class PeopleService {
       return client;
     }
   
-    updateClient(id: string, name:string,cpf:string): Client {
+    updateClientById(id: string, name:string,cpf:string): Client {
       const clientAccounts = this.readClients();
       const clientAccount = clientAccounts.find(account => account._peopleID === id);
   
@@ -106,7 +106,7 @@ export class PeopleService {
       return bankManager;
     }
   
-    updateBankManager(id: string, name:string, cpf:string): bankManager {
+    updateBankManagerById(id: string, name:string, cpf:string): bankManager {
       const accounts = this.readBankManagers();
       const bankManager = accounts.find(account => account._peopleID === id);
       const bankManagerIndex = accounts.findIndex(account => account._peopleID === id);
