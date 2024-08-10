@@ -15,5 +15,21 @@
     "_isActive": true,
     "_currentAccount": [],
     "_poupancaAccount": []
+  },
+  {
+    "_peopleID": "62ea1c1f-2d58-4c99-9d7b-06195cfb2e40",
+    "_name": "John Doe",
+    "_cpf": "34567912345",
+    "_isActive": true,
+    "_currentAccount": [],
+    "_poupancaAccount": []
+  },
+  {
+    "_peopleID": "af2dfa64-f3d1-4d44-91d0-329b5ad1efee",
+    "_name": "John Doe",
+    "_cpf": "34567912345",
+    "_isActive": true,
+    "_currentAccount": [],
+    "_poupancaAccount": []
   }
 ]
