@@ -1,0 +1,1 @@
+{"version":3,"file":"bankManager.model.js","sourceRoot":"","sources":["../../../src/People/creators/bankManager.model.ts"],"names":[],"mappings":";;AACA,6FAAgF;AAChF,qGAAwF;AAExF,MAAqB,WAAW;IAO5B,aAAa;QACT,OAAO,IAAI,iCAAiB,EAAE,CAAA;IAClC,CAAC;IACD,iBAAiB;QACb,OAAO,IAAI,qCAAqB,EAAE,CAAA;IACtC,CAAC;CACJ;AAbD,8BAaC"}

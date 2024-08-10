@@ -1,0 +1,1 @@
+{"version":3,"file":"deactivateCurrentAccount.model.js","sourceRoot":"","sources":["../../../../src/Accounts/products/currentAccount/deactivateCurrentAccount.model.ts"],"names":[],"mappings":";;AAGA,MAAqB,wBAAwB;IACzC,UAAU,CAAC,OAAsB;QAC7B,OAAO,CAAC,SAAS,GAAG,KAAK,CAAA;QACzB,OAAO,OAAO,CAAA;IAClB,CAAC;CACJ;AALD,2CAKC"}
