@@ -3,9 +3,8 @@ import currentAccount from "./creators/currentAccount.model";
 import poupancaAccount from "./creators/poupancaAccount.model";
 import * as path from 'path';
 import * as fs from 'fs';
-import openCurrentAccount from './products/currentAccount/openCurrentAccount.model';
-import openPoupancaAccount from './products/poupancaAccount/openPoupancaAccount.model';
-import deactivateCurrentAccount from './products/currentAccount/deactivateCurrentAccount.model';
+import accountFactory from './factories/accountFactory.model';
+import { typeAccount } from '../enum/account.enum';
 
 @Injectable()
 export class AccountsService {
@@ -29,14 +28,22 @@ export class AccountsService {
     fs.writeFileSync(this.filePathPA, JSON.stringify(poupancaAccounts, null, 2), 'utf8');
   }
 
-  createCurrentAccounts(isBankManager:boolean, accountNumber:string, amount:number,initDate:string): currentAccount {
-    const currentAccounts = this.readCurrentAccounts();
-
-    const openAccount:openCurrentAccount = new currentAccount().createOpenAccount(isBankManager)
-    const newAccount:currentAccount = openAccount.create(accountNumber,amount,initDate)
-    currentAccounts.push(newAccount);
-    this.writeCurrentAccounts(currentAccounts);
-    return newAccount;
+  createAccount(isBankManager:boolean, type: typeAccount,amount:number,initDate:string) {
+    const factory = new accountFactory()
+    const newAccount = factory.createAccount(isBankManager,type,amount,initDate)
+    switch (type){
+      case typeAccount.CURRENT:
+        const currentAccounts = this.readCurrentAccounts();
+        currentAccounts.push(newAccount as currentAccount)
+        this.writeCurrentAccounts(currentAccounts);
+        return newAccount
+      
+      case typeAccount.POUPANCA:
+        const poupancaAccounts = this.readPoupancaAccounts()
+        poupancaAccounts.push(newAccount as poupancaAccount)
+        this.writePoupancaAccounts(poupancaAccounts)
+        return newAccount
+    }
   }
 
   findCurrentAccountById(id: string): currentAccount {
@@ -50,9 +57,9 @@ export class AccountsService {
     return currentAccount;
   }
 
-  updateCurrentAccountById(id: string, amount: number, initDate: string, accountNumber: string): currentAccount {
+  updateCurrentAccountById(id: string, amount: number, initDate: string): currentAccount {
     const accounts = this.readCurrentAccounts();
-    const currentAccount = accounts.find(account => account._accountID === id);
+    const currentAccount = this.findCurrentAccountById(id)
 
     if(!currentAccount) {
       throw new NotFoundException(`Current account with ${id} not found`);
@@ -60,7 +67,6 @@ export class AccountsService {
     const currentAccountIndex = accounts.findIndex(account => account._accountID === id);
     currentAccount._amount = amount;
     currentAccount._initDate = initDate;
-    currentAccount._accountNumber = accountNumber;
 
     accounts[currentAccountIndex] = currentAccount
 
@@ -71,31 +77,23 @@ export class AccountsService {
 
   deactivateCurrentAccountById(id: string):currentAccount {
     const currentAccounts = this.readCurrentAccounts();
-    const findCurrentAccount = currentAccounts.find(account => account._accountID === id);
-    if(!findCurrentAccount) {
+    const findCurrentAccount = this.findCurrentAccountById(id)
+    const currentAccountIndex = currentAccounts.findIndex(account => account._accountID === id);
+    if(!currentAccountIndex) {
       throw new NotFoundException(`Current account with ${id} not found`);
     }
-    const initAccountCC = new currentAccount()
-    const accountCC = Object.assign(initAccountCC,findCurrentAccount) // copy value of properties of findCurrentAccount to accountCC
-    const currentAccountIndex = currentAccounts.findIndex(account => account._accountID === id)
-    const deactivateCC = accountCC.startDeactivate()
-    const account = deactivateCC.deactivate(accountCC)
+    const account = new currentAccount(findCurrentAccount._amount,findCurrentAccount._initDate)
+    account._accountID = findCurrentAccount._accountID
+    account._accountNumber = findCurrentAccount._accountNumber
+
+    account.processDeactivate()
 
     currentAccounts[currentAccountIndex] = account
 
     this.writeCurrentAccounts(currentAccounts);
     return account
   }
-
-  createPoupancaAccount(isBankManager:boolean, accountNumber:string, amount:number,initDate:string): poupancaAccount {
-    const poupancaAccounts = this.readPoupancaAccounts();
-
-    const openAccount:openPoupancaAccount = new poupancaAccount().createOpenAccount(isBankManager)
-    const newAccount:poupancaAccount = openAccount.create(accountNumber,amount,initDate)
-    poupancaAccounts.push(newAccount);
-    this.writePoupancaAccounts(poupancaAccounts);
-    return newAccount;
-  }
+  
 
   findPoupancaAccountById(id: string): poupancaAccount {
     const poupancaAccounts = this.readPoupancaAccounts();
@@ -108,18 +106,17 @@ export class AccountsService {
     return poupancaAccount;
   }
 
-  updatePoupancaAccountById(id: string, amount: number, initDate: string, accountNumber: string): poupancaAccount {
+  updatePoupancaAccountById(id: string, amount: number, initDate: string): poupancaAccount {
     const accounts = this.readPoupancaAccounts();
-    const poupancaAccount = accounts.find(account => account._accountID === id);
+    const poupancaAccount = this.findPoupancaAccountById(id)
     const poupancaAccountIndex = accounts.findIndex(account => account._accountID === id);
 
-    if(!poupancaAccount) {
+    if(!poupancaAccountIndex) {
       throw new NotFoundException(`poupanca account with ${id} not found`);
     }
 
     poupancaAccount._amount = amount;
     poupancaAccount._initDate = initDate;
-    poupancaAccount._accountNumber = accountNumber;
 
     accounts[poupancaAccountIndex] = poupancaAccount
 
@@ -130,15 +127,16 @@ export class AccountsService {
 
   deactivatePoupancaAccountById(id: string): poupancaAccount {
     const poupancaAccounts = this.readPoupancaAccounts();
-    const findPoupancaAccount = poupancaAccounts.find(account => account._accountID === id);
-    if(!findPoupancaAccount) {
-      throw new NotFoundException(`Poupanca account with ${id} not found`);
+    const findPoupancaAccount = this.findPoupancaAccountById(id)
+    const poupancaAccountIndex = poupancaAccounts.findIndex(account => account._accountID === id);
+    if(!poupancaAccountIndex) {
+      throw new NotFoundException(`Current account with ${id} not found`);
     }
-    const initPoupancaAccount = new poupancaAccount()
-    const accountPA = Object.assign(initPoupancaAccount,findPoupancaAccount) // copy value of properties of findCurrentAccount to accountCC
-    const poupancaAccountIndex = poupancaAccounts.findIndex(account => account._accountID === id)
-    const deactivateCC = accountPA.startDeactivate()
-    const account = deactivateCC.deactivate(accountPA)
+    const account = new poupancaAccount(findPoupancaAccount._amount,findPoupancaAccount._initDate)
+    account._accountID = findPoupancaAccount._accountID
+    account._accountNumber = findPoupancaAccount._accountNumber
+
+    account.processDeactivate()
 
     poupancaAccounts[poupancaAccountIndex] = account
 
