@@ -1,12 +1,14 @@
-import iAccount from "../factories/iAccount.model";
-import openPoupancaAccount from "../products/poupancaAccount/openPoupancaAccount.model"
-import depositPoupancaAccount from "../products/poupancaAccount/depositPoupancaAccount.model"
-import transferPoupancaAccount from "../products/poupancaAccount/transferPoupancaAccount.model";
-import withdrawnPoupancaAccount from "../products/poupancaAccount/withdrawnPoupancaAccount.model";
 import { UnauthorizedException } from "@nestjs/common";
-import deactivatePoupancaAccount from "../products/poupancaAccount/deactivatePoupancaAccount.model";
+import iDeposit from "../products/iDeposit.model";
+import currentAccount from "../creators/currentAccount.model";
+import iWithdrawn from "../products/iWithdrawn.model";
+import iDeactivateAccount from "../products/iDeactivateAccount.model";
+import iTransfer from "../products/iTransfer.model";
+import iAccount from "../products/iAccount.model";
+import { v4 as uuidv4 } from 'uuid';
 
-export default class poupancaAccount implements iAccount {
+
+export default class poupancaAccount implements iAccount, iDeposit,iWithdrawn,iTransfer,iDeactivateAccount {
     _accountID: string 
     _accountNumber: string 
     _amount: number
@@ -14,6 +16,13 @@ export default class poupancaAccount implements iAccount {
     _initDate: string
     _rendimento:number
     
+    constructor(amount:number,initDate:string){
+        this._isActive = true 
+        this._initDate = initDate
+        this._amount = amount 
+        this._accountID = uuidv4()
+        this._accountNumber = uuidv4()
+    }
 
     private validateOperation(isBankManager:boolean){
         if(!isBankManager){
@@ -21,27 +30,47 @@ export default class poupancaAccount implements iAccount {
         }
         return true
     }
+    processDeposit(amountDeposit: number): void {
+        if(!this._isActive){
+            throw new UnauthorizedException("Invalid operation")
+        }
+        const new_amount = (this._amount?? 0) + amountDeposit
 
-    createOpenAccount(isBankManager:boolean):openPoupancaAccount{
+        this._amount = new_amount
+    }
+    processTransfer(
+        amountTransfer:number,
+        accountToTransfer:poupancaAccount|currentAccount): void {
+        if(!this._isActive && !accountToTransfer._isActive){
+                throw new UnauthorizedException("Invalid operation")
+            }
+        else if (this._amount < amountTransfer){
+                throw new UnauthorizedException("Invalid operation")
+            }
+        const newAmountAccountToTransfer = (accountToTransfer._amount??0) + amountTransfer
+        const newAmountAccountMakeTransfer = (this._amount??0) - amountTransfer
+    
+        accountToTransfer._amount = newAmountAccountToTransfer
+        this._amount = newAmountAccountMakeTransfer
+    }
+    processWithdrawn(amountWithdrawn:number): void {
+        if(!this._isActive){
+            throw new UnauthorizedException("Invalid operation")
+        }
+        else if (this._amount < amountWithdrawn){
+            throw new UnauthorizedException("Invalid operation")
+        }
+        const new_amount = this._amount - amountWithdrawn 
+        
+        this._amount = new_amount
+    }
+    processDeactivate(): void {
+        this._isActive = false
+    }
+    updateRendimento(isBankManager:boolean,rendimento:number):void {
         if(!this.validateOperation(isBankManager)){
             throw new UnauthorizedException("Unauthorized operation")
         }
-        return new openPoupancaAccount()
-    }
-
-    createDeposit(): depositPoupancaAccount {
-        return new depositPoupancaAccount()
-    }
-    createTransfer(): transferPoupancaAccount {
-        return new transferPoupancaAccount()
-    }
-    createWithdrawn(): withdrawnPoupancaAccount {
-        return new withdrawnPoupancaAccount()
-    }
-    startDeactivate(): deactivatePoupancaAccount {
-        return new deactivatePoupancaAccount()
-    }
-    updateRendimento(isBankManager:boolean,rendimento:number):void {
         this._rendimento = rendimento
     }
 }
