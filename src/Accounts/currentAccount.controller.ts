@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, NotFoundException, Param, ParseUUIDPipe, Post, Put } from '@nestjs/common';
 import currentAccount from './creators/currentAccount.model';
 import { AccountsService } from './accounts.service';
+import { typeAccount } from '../enum/account.enum';
 
 @Controller('currentAccounts')
 export class currentAccountController {
@@ -10,10 +11,10 @@ export class currentAccountController {
       createCurrentAccount(
       @Body('isBankManager') isBankManager: boolean,
       @Body('amount') amount: number,
-      @Body("accountNumber") accountNumber: string,
       @Body("initDate") initDate: string
       ): currentAccount {
-      return this.accountService.createCurrentAccounts(isBankManager,accountNumber,amount,initDate);
+        const account = this.accountService.createAccount(isBankManager,typeAccount.CURRENT,amount,initDate);
+      return account as currentAccount
      }
     @Get(":id")
     findCurrentAccountByID(
@@ -23,11 +24,10 @@ export class currentAccountController {
     @Put(':id')
     updateCurrentAccountById(
       @Param('id',new ParseUUIDPipe({ version: '4' })) id: string,
-      @Body("accountNumber") accountNumber: string,
       @Body("initDate") initDate: string,
       @Body("amount") amount: number
     ): currentAccount{
-      return this.accountService.updateCurrentAccountById(id,amount,initDate,accountNumber)
+      return this.accountService.updateCurrentAccountById(id,amount,initDate)
     }
     @Delete(":id")
     deactivateClientByID(
