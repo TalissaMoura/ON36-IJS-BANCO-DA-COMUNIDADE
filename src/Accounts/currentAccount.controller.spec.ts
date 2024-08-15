@@ -16,16 +16,14 @@ describe('CurrentAccountController', () => {
   
     test('should create a current account', () => {
       const isBankManager = true
-      const amount = 2014;
-      const initDate = '2023-11-20';
-      const accountNumber = 4569
+      const amount = 2022;
+      const initDate = '2023-09-20';
   
   
       return supertest(app.getHttpServer())
         .post('/currentAccounts')
         .send({
          isBankManager,
-         accountNumber,
          amount,
          initDate,
         })
@@ -33,7 +31,6 @@ describe('CurrentAccountController', () => {
         .expect(({ body }) => {
           expect(body._amount).toBe(amount);
           expect(body._initDate).toBe(initDate);
-          expect(body._accountNumber).toBe(accountNumber);
         });
     });
   
@@ -48,15 +45,13 @@ describe('CurrentAccountController', () => {
           body._amount = 2200
           body._initDate = "2023-5-25"
           body._isActive = false
-          body._accountNumber= "9841"
         });
     });
   
     test('should update a current accounts', () => {
-      const id = 'c6640507-e052-4053-b079-ca7ac61a2c7d';
-      const amount = 2250
-      const initDate = "2023-4-17"
-      const accountNumber = "2324"
+      const id = '7b440b1f-f786-4ae3-944f-878399ff00ce';
+      const amount = 345
+      const initDate = "2023-2-12"
   
       return supertest(app.getHttpServer())
         .put(`/currentAccounts/${id}`)
@@ -64,19 +59,17 @@ describe('CurrentAccountController', () => {
           id,
           amount,
           initDate,
-          accountNumber
         })
         .expect(200)
         .expect(({ body }) => {
           body._amount = amount
           body._initDate = initDate
           body._isActive = true
-          body._accountNumber = accountNumber
         });
     });
   
     test('should deactivate a current account', () => {
-      const id = 'c6640507-e052-4053-b079-ca7ac61a2c7d';
+      const id = '2fda8739-ee48-4ea2-91e8-31b5ece8660d';
   
       return supertest(app.getHttpServer())
         .delete(`/currentAccounts/${id}`)
