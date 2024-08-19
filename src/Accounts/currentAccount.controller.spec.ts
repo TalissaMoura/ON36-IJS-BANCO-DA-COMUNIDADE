@@ -16,7 +16,7 @@ describe('CurrentAccountController', () => {
   
     test('should create a current account', () => {
       const isBankManager = true
-      const amount = 2022;
+      const amount = 2092;
       const initDate = '2023-09-20';
   
   
@@ -50,7 +50,7 @@ describe('CurrentAccountController', () => {
   
     test('should update a current accounts', () => {
       const id = '7b440b1f-f786-4ae3-944f-878399ff00ce';
-      const amount = 345
+      const amount = 3498
       const initDate = "2023-2-12"
   
       return supertest(app.getHttpServer())

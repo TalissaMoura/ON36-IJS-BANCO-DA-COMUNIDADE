@@ -16,8 +16,8 @@ describe('poupancaAccountController', () => {
   
     test('should create a poupanca account', () => {
       const isBankManager = true
-      const amount = 2076;
-      const initDate = '2022-09-10';
+      const amount = 2345;
+      const initDate = '2022-09-11';
   
   
       return supertest(app.getHttpServer())
@@ -51,7 +51,7 @@ describe('poupancaAccountController', () => {
   
     test('should update a poupanca accounts', () => {
       const id = '6ce73870-ead1-4807-907e-73d1f6fed7fa';
-      const amount = 2250
+      const amount = 1240
       const initDate = "2022-8-16"
   
       return supertest(app.getHttpServer())
