@@ -12,28 +12,28 @@ export class currentAccountController {
       @Body('isBankManager') isBankManager: boolean,
       @Body('amount') amount: number,
       @Body("initDate") initDate: string
-      ): currentAccount {
+      ): Promise<currentAccount> {
         const account = this.accountService.createAccount(isBankManager,typeAccount.CURRENT,amount,initDate);
-      return account as currentAccount
+      return account as Promise<currentAccount>
      }
     @Get(":id")
-    findCurrentAccountByID(
-      @Param('id',new ParseUUIDPipe({ version: '4' })) id: string): currentAccount {
-      return this.accountService.findCurrentAccountById(id)
+    async findCurrentAccountByID(
+      @Param('id',new ParseUUIDPipe({ version: '4' })) id: string): Promise<currentAccount> {
+      return await this.accountService.findCurrentAccountById(id)
     }
     @Put(':id')
-    updateCurrentAccountById(
+    async updateCurrentAccountById(
       @Param('id',new ParseUUIDPipe({ version: '4' })) id: string,
       @Body("initDate") initDate: string,
       @Body("amount") amount: number
-    ): currentAccount{
-      return this.accountService.updateCurrentAccountById(id,amount,initDate)
+    ): Promise<currentAccount>{
+      return await this.accountService.updateCurrentAccountById(id,amount,initDate)
     }
     @Delete(":id")
-    deactivateClientByID(
+    async deactivateClientByID(
       @Param("id",new ParseUUIDPipe({ version: '4' })) id: string
-    ):currentAccount{
-      return this.accountService.deactivateCurrentAccountById(id)
+    ):Promise<currentAccount>{
+      return await this.accountService.deactivateCurrentAccountById(id)
     }
   
 }
