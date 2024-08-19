@@ -9,7 +9,7 @@
   {
     "_isActive": true,
     "_initDate": "2022-8-16",
-    "_amount": 2250,
+    "_amount": 1240,
     "_accountID": "6ce73870-ead1-4807-907e-73d1f6fed7fa",
     "_accountNumber": "cfe21cf9-c765-444b-8b9b-32998b6b6bd8"
   },
@@ -26,5 +26,12 @@
     "_amount": 2076,
     "_accountID": "8b9329c4-7a5e-4029-a7d4-9c09f6e82cf8",
     "_accountNumber": "55793d46-ff81-43c0-88ef-ee75b1a96917"
+  },
+  {
+    "_isActive": true,
+    "_initDate": "2022-09-11",
+    "_amount": 2345,
+    "_accountID": "42c5d3cc-78ed-4a1d-86a6-ef428090c93d",
+    "_accountNumber": "39925f81-973f-4524-83e6-b932efd6768c"
   }
 ]
