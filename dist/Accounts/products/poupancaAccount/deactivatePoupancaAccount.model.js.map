@@ -1,1 +1,0 @@
-{"version":3,"file":"deactivatePoupancaAccount.model.js","sourceRoot":"","sources":["../../../../src/Accounts/products/poupancaAccount/deactivatePoupancaAccount.model.ts"],"names":[],"mappings":";;AAGA,MAAqB,yBAAyB;IAC1C,UAAU,CAAC,eAA+B;QACtC,eAAe,CAAC,SAAS,GAAG,KAAK,CAAA;QACjC,OAAO,eAAe,CAAA;IAC1B,CAAC;CACJ;AALD,4CAKC"}
