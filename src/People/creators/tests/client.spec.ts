@@ -2,8 +2,8 @@ import { UnauthorizedException } from "@nestjs/common";
 import Client from "../client.model";
 import createClient from "../../products/Client/createClient.model";
 import deactivateClient from "../../products/Client/deactivateClient.model";
-import poupancaAccount from "src/Accounts/creators/poupancaAccount.model";
-import currentAccount from "src/Accounts/creators/currentAccount.model";
+import poupancaAccount from "src/Accounts/domain/poupancaAccount.model";
+import currentAccount from "src/Accounts/domain/currentAccount.model";
 
 describe("Client create products tests",()=>{
     const account: Client  = new Client()

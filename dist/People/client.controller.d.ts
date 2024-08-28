@@ -5,6 +5,6 @@ export declare class clientController {
     constructor(peopleService: PeopleService);
     createClient(name: string, cpf: string): Client;
     findClientByID(id: string): Client;
-    updateClient(id: string, name: string, cpf: string): Client;
-    deactiveClient(id: string): Client;
+    updateClientById(id: string, name: string, cpf: string): Client;
+    deactiveClientbyID(id: string): Client;
 }

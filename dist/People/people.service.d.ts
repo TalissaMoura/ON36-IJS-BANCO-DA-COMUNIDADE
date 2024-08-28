@@ -9,10 +9,10 @@ export declare class PeopleService {
     private writeBankManagers;
     createClient(name: string, cpf: string): Client;
     findClientById(id: string): Client;
-    updateClient(id: string, name: string, cpf: string): Client;
+    updateClientById(id: string, name: string, cpf: string): Client;
     deactivateClientById(id: string): Client;
     createBankManager(name: string, cpf: string): bankManager;
     findBankManagerById(id: string): bankManager;
-    updateBankManager(id: string, name: string, cpf: string): bankManager;
+    updateBankManagerById(id: string, name: string, cpf: string): bankManager;
     deactivateBankManagerById(id: string): bankManager;
 }

@@ -5,6 +5,6 @@ export declare class bankManagerController {
     constructor(peopleService: PeopleService);
     createBankManger(name: string, cpf: string): bankManager;
     findBankManagerByID(id: string): bankManager;
-    updateBankManager(id: string, name: string, cpf: string): bankManager;
+    updateBankManagerById(id: string, name: string, cpf: string): bankManager;
     deactiveBankManager(id: string): bankManager;
 }

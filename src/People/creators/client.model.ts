@@ -1,6 +1,6 @@
-import currentAccount from "../../Accounts/creators/currentAccount.model";
+import currentAccount from "../../Accounts/domain/currentAccount.model";
 import iPeople from "../factory/iPeople.model";
-import poupancaAccount from "../../Accounts/creators/poupancaAccount.model";
+import poupancaAccount from "../../Accounts/domain/poupancaAccount.model";
 import createClient from "../products/Client/createClient.model";
 import deactivateClient from "../products/Client/deactivateClient.model";
 
