@@ -9,6 +9,7 @@ import { BaseAccountRepository } from './ports/out/accounts.repository';
 import { PoupancaAccountsService } from './poupanca-accounts.service';
 import { AppModule } from '../../app.module';
 import { AccountsModule } from './accounts.module';
+import { INestApplication } from '@nestjs/common';
 
 jest.mock("crypto")
 
@@ -24,6 +25,7 @@ describe('CurrentAccountService', () => {
     service = module.get<CurrentAccountsService>(CurrentAccountsService);
 
   });
+
 
   test("service should be defined",() =>{
     console.log(module)
